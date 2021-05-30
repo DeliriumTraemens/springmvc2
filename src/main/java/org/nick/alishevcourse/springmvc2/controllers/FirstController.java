@@ -33,6 +33,35 @@ public class FirstController {
 		return "first/hello";
 	}
 	
+	@GetMapping("/calculator")
+	public String calculate(@RequestParam(value = "a",required = false)String a,
+	                        @RequestParam(value="b",required = false)String b,
+	                        @RequestParam(value = "operation",required =false)String operation,
+	                        Model model){
+		int num1=Integer.valueOf(a);
+		int num2=Integer.valueOf(b);
+		double result;
+		switch (operation){
+			case "add":
+				result=num1+num2;
+				break;
+			case "sub":
+				result=num1-num2;
+				break;
+			case "mul":
+				result=num1*num2;
+				break;
+			case "div":
+				result=num1/(double)num2;
+				break;
+			default:
+				throw new IllegalStateException("Unexpected value: " + operation);
+		}
+				String resulted=Double.toString(result);
+	model.addAttribute("resultat",resulted);
+	return "first/calculate";
+	}
+	
 	@GetMapping("/goodbye")
 	public String goodByePage(){
 		return "first/goodbye";
