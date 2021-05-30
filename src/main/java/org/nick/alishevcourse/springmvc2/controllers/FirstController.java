@@ -21,8 +21,11 @@ public class FirstController {
 //	}
 
 //	@RequestParam("имя(ключ)параметра запроса") [кладем в ]String name
+//	АХТУНГ!!! @RequestParam ОБЯЗАТЕЛЬНЫ!!! Без них, в отличие от HttpServletRequest будет выдана ошибка 404.
+//	Для избежания 404 добавляем аргумент required = false @RequestParam(value = "name",required = false)
 	@GetMapping("/hello")
-	public String helloPage(@RequestParam("name") String name, @RequestParam("surname") String surname){
+	public String helloPage(@RequestParam(value = "name",required = false) String name,
+	                        @RequestParam(value = "surname",required = false) String surname){
 		System.out.println("Hello, "+name+" "+surname);
 		return "first/hello";
 	}
