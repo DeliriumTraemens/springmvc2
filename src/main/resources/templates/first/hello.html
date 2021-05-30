@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
@@ -9,6 +9,7 @@
 <a href="/goodbye">Say goodbye</a><br/>
 or <a href="/hello?name=Tom&surname=Jones">Войти с именем</a><br/>
 <a href="/exit">Way to Nowhere</a>
+<h4 th:text="${message}"h4/>
 
 </body>
 </html>
